@@ -12,19 +12,19 @@ pipeline {
         }
         stage('Setup') {
             steps {
-                sh "pip install -r requirements.txt"
+                sh "sudo pip install -r requirements.txt"
             }
         }
         stage('Test') {
             steps {
-                sh "pytest"
+                sh "sudo pytest"
                 sh "whoami"
             }
         }
         stage('package file') {
             steps {
-                sh "zip -r mainapp.zip ./* -x '*.git*'"
-                sh "ls -lart"
+                sh "sudo zip -r mainapp.zip ./* -x '*.git*'"
+                sh "sudo ls -lart"
             }
         }
         stage('Deploy to Prod') {

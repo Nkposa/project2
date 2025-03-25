@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git url: 'git@github.com:Nkposa/project2.git', branch: 'main'
+                git url: 'https://github.com/Nkposa/project2.git', branch: 'main'
                 sh "ls -ltr"
             }
         }

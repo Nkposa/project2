@@ -1,5 +1,5 @@
 pipeline {
-    agent single-server
+    agent node1
     environment {
         SERVER_IP = credentials('prod-server-ip')
     }

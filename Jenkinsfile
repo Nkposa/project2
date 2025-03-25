@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Setup') {
             steps {
+                sh "source /home/ec2-user/app/venv/bin/activate"
                 sh "sudo pip install -r requirements.txt"
             }
         }

@@ -11,17 +11,17 @@ pipeline {
                 sh "ls -ltr"
             }
         }
-        stage('setup') {
-            steps {
-                sh "sudo pip install -r requirements.txt"
-            }
-        }
-        stage('test') {
-            steps {
-                sh 'pytest'
-                sh 'whoami'
-            }
-        }
+        // stage('setup') {
+        //     steps {
+        //         sh "sudo pip install -r requirements.txt"
+        //     }
+        // }
+        // stage('test') {
+        //     steps {
+        //         sh 'pytest'
+        //         sh 'whoami'
+        //     }
+        // }
         stage('docker login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {

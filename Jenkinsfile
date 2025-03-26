@@ -25,22 +25,22 @@ pipeline {
         stage('docker login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh 'echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin'
+                    sh 'sudo echo ${PASSWORD} | sudo docker login -u ${USERNAME} --password-stdin'
                 }
                 sh 'echo login_successfully'
             }
         }
         stage('docker build image') {
             steps {
-                sh 'docker build -t ${IMAGE_TAG} .'
-                sh 'echo image-build-successfully'
-                sh 'docker images'
+                sh 'sudo docker build -t ${IMAGE_TAG} .'
+                sh 'sudo echo image-build-successfully'
+                sh 'sudo docker images ls'
             }
         }
         stage('docker push') {
             steps {
-                sh 'docker push ${IMAGE_TAG}'
-                sh 'echo Image_pushed'
+                sh 'sudo docker push ${IMAGE_TAG}'
+                sh 'sudo echo Image_pushed'
             }
         }
     }
